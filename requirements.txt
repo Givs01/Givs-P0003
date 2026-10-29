@@ -1,0 +1,4 @@
+openpyxl>=3.1.0
+pywin32>=306
+fpdf2==2.8.1
+uharfbuzz

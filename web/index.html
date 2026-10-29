@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SLB Gazette Prep</title>
+  <meta name="description" content="Merge SLB .xls files into a single print-ready Gazette workbook with an Index sheet.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>SLB Gazette Prep</h1>
+      <p class="sub">Merges <code>.xls</code> files into one print-ready workbook with an Index sheet.
+        Every file is processed in your browser. Nothing is uploaded.</p>
+    </header>
+
+    <section class="card">
+      <h2>1. Select files</h2>
+      <label id="drop" class="drop">
+        <input id="picker" type="file" accept=".xls" multiple hidden>
+        <strong>Click to choose</strong> or drag &amp; drop <code>.xls</code> files here
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>2. Set merge order</h2>
+      <p class="hint">Use the arrows to reorder. Sheets will appear in this order.</p>
+      <ol id="list" class="list"><li class="empty">No files selected yet.</li></ol>
+    </section>
+
+    <section class="card">
+      <h2>3. Generate</h2>
+      <button id="run" class="btn" disabled>Generate Gazette file</button>
+      <span id="status" class="status">Loading engine…</span>
+      <div id="result" hidden>
+        <div class="downloads">
+          <a id="download" class="btn btn-ok" download>Download Excel</a>
+          <a id="download-pdf" class="btn btn-ok" download>Download PDF (A4)</a>
+        </div>
+        <table class="report">
+          <thead><tr><th>Sr. No.</th><th>City Name</th><th>Page No.</th><th>Source file</th><th>Remarks</th></tr></thead>
+          <tbody id="report"></tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Log</summary>
+        <pre id="log"></pre>
+      </details>
+    </section>
+
+    <footer>
+      Rows 40–44 are removed from each sheet. The last row is merged across A:E, and A4 portrait print setup is applied.
+      Index rows for sheets where every number is 0 are <mark>highlighted</mark>.
+      The PDF starts with a Contents page (Sr. No., City Name, Page No., Remarks), then one A4 page per city.
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

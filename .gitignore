@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+
+# Local data - never commit source or output files
+input/
+*.xls
+*.xlsx
+*.pdf
+converted_xlsx/
+~$*
